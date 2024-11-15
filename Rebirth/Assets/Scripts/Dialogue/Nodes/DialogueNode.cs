@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum DialogueNodeType
@@ -6,7 +5,7 @@ public enum DialogueNodeType
     Talk,
     End
 }
-// 이벤트 타입 열거형
+
 public enum DialogueEventType
 {
     None,
@@ -17,24 +16,14 @@ public enum DialogueEventType
     EndConversation
 }
 
-public enum DialogueCondition
+public enum DialogueState
 {
     None,
     Normal,
-    FirstMeeting,
-    Acquaintance,
-    FindingItem,
-    FoundItem,
+    HasNotMet,
+    HasMet,
     QuestIncomplete,
     QuestComplete,
-    MAX
-}
-
-public enum ItemDialogueCondition
-{
-    item1,
-    item2,
-    item3,
     MAX
 }
 
@@ -42,7 +31,6 @@ public enum ItemDialogueCondition
 [System.Serializable]
 public class DialogueNode : ScriptableObject
 {
-    public DialogueCondition dialogueCondition;
     public string dialogueID;
     public string dialogueText;
     virtual public DialogueNodeType NodeType { get; }

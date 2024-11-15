@@ -22,6 +22,16 @@ public class InventoryManager : MonoBehaviour
         inventoryData = new InventoryData();
         inventoryUI.Initialize(inventoryData);
     }
+    
+    private void Start()
+    {   
+        DialogueManager.Instance.SubscribeToEvent<ItemData>(DialogueEventType.GiveItem, HandleGiveItem);
+    }
+
+    private void HandleGiveItem(ItemData itemData)
+    {
+        Debug.Log($"Adding item to inventory");
+    }
 
     private void Update()
     {

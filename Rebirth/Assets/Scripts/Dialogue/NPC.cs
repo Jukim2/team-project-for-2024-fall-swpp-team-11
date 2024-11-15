@@ -1,12 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System;
-using System.Collections.Generic;
 
-public class NPC : MonoBehaviour, IInteractable, IDialogueEventHandler
+public class NPC : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogueDataSO dialogueData;
-    [SerializeField] private DialogueCondition dialogueCondition;
+    [SerializeField] private DialogueState dialogueCondition;
     private Outline outline;
 
     private void Awake()
@@ -15,7 +12,7 @@ public class NPC : MonoBehaviour, IInteractable, IDialogueEventHandler
     }
     public void Interact()
     {
-		DialogueManager.Instance.StartDialogue(dialogueData, this, dialogueCondition);
+		DialogueManager.Instance.StartDialogue(dialogueData, dialogueCondition);
     }
 
     public void OnFocus()
@@ -45,8 +42,6 @@ public class NPC : MonoBehaviour, IInteractable, IDialogueEventHandler
                 // 상점 UI 열기
                 Debug.Log("Opening shop...");
                 break;
-                
-            // 추가 이벤트 타입 처리
         }
     }
 }
